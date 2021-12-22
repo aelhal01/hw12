@@ -44,21 +44,20 @@
         display: inline-block;
         font-size: 25px;
     }
-
-input[type=text] {
-    font-size: 20px;
-    padding:5px;
-    border:2px solid #ccc;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-}
-select[type=text] {
-    font-size: 100%;
-    padding:5px;
-    border:2px solid #ccc;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-}
+    input[type=text] {
+      font-size: 20px;
+      padding:5px;
+      border:2px solid #ccc;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+    }
+    select[type=text] {
+      font-size: 100%;
+      padding:5px;
+      border:2px solid #ccc;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+    }
   </style>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -68,117 +67,116 @@ select[type=text] {
 
 <script language="javascript">
 
-        function PorD_Check() {
-            if (document.getElementById('delivery').checked) {
-                document.getElementById('reveal-if-active').style.visibility = 'visible';
-            }
-            else { document.getElementById('reveal-if-active').style.visibility = 'hidden';
-            }
+      function PorD_Check() {
+        if (document.getElementById('delivery').checked) {
+          document.getElementById('reveal-if-active').style.visibility = 'visible';
         }
-
-        function calc_tax(subtotal) {
-            tax = (subtotal * .0625).toFixed(2);
-            document.getElementById("tax").value = tax;
-            return tax;
+        else { document.getElementById('reveal-if-active').style.visibility = 'hidden';
         }
+      }
 
-        function calc_total(subtotal, tax) {
-            total = ((1 * subtotal) + (1 * tax)).toFixed(2);
-            document.getElementById("total").value = total;
-        }
+      function calc_tax(subtotal) {
+        tax = (subtotal * .0625).toFixed(2);
+        document.getElementById("tax").value = tax;
+        return tax;
+      }
 
-        $(document).ready(function(){
-            $("select").change(function() { //if one of the selects are changed
-                quan = this.selectedIndex;  //gets selected quantity
-                rowIndex = this.name.substring(8); // gets index of menu item (1-5)
-                if (rowIndex == 1) {
-                    var priceIndex = document.getElementById('CostEach1').getAttribute('data-value');
-                    document.getElementById("cost1").value = (quan * priceIndex).toFixed(2);
-                }
-                else if (rowIndex == 2) {
-                    var priceIndex = document.getElementById('CostEach2').getAttribute('data-value');
-                    document.getElementById("cost2").value = (quan * priceIndex).toFixed(2);
-                }
-                else if (rowIndex ==3) {
-                    var priceIndex = document.getElementById('CostEach3').getAttribute('data-value');
-                    document.getElementById("cost3").value = (quan * priceIndex).toFixed(2);
-                }
-                else if (rowIndex == 4) {
-                    var priceIndex = document.getElementById('CostEach4').getAttribute('data-value');
-                    document.getElementById("cost4").value = (quan * priceIndex).toFixed(2);
-                }
-                else if (rowIndex == 5) {
-                    var priceIndex = document.getElementById('CostEach5').getAttribute('data-value');
-                    document.getElementById("cost5").value = (quan * priceIndex).toFixed(2);
-                }
-                updateTotal();
-            })
-            function updateTotal()
-            {
-                cost1 = 1 * document.getElementById("cost1").value;
-                cost2 = 1 * document.getElementById("cost2").value;
-                cost3 = 1 * document.getElementById("cost3").value;
-                cost4 = 1 * document.getElementById("cost4").value;
-                cost5 = 1 * document.getElementById("cost5").value;
-                subtotal = 0;
-                subtotal = cost1 + cost2 + cost3 + cost4 + cost5;
-                document.getElementById("subtotal").value = (subtotal * 1).toFixed(2);
-                tax = calc_tax(subtotal);
-                calc_total(subtotal, tax);
-            }
+      function calc_total(subtotal, tax) {
+        total = ((1 * subtotal) + (1 * tax)).toFixed(2);
+        document.getElementById("total").value = total;
+      }
+
+      $(document).ready(function(){
+        $("select").change(function() { //if one of the selects are changed
+          quan = this.selectedIndex;  //gets selected quantity
+          rowIndex = this.name.substring(8); // gets index of menu item (1-5)
+          if (rowIndex == 1) {
+            var priceIndex = document.getElementById('CostEach1').getAttribute('data-value');
+            document.getElementById("cost1").value = (quan * priceIndex).toFixed(2);
+          }
+          else if (rowIndex == 2) {
+            var priceIndex = document.getElementById('CostEach2').getAttribute('data-value');
+            document.getElementById("cost2").value = (quan * priceIndex).toFixed(2);
+          }
+          else if (rowIndex ==3) {
+            var priceIndex = document.getElementById('CostEach3').getAttribute('data-value');
+            document.getElementById("cost3").value = (quan * priceIndex).toFixed(2);
+          }
+          else if (rowIndex == 4) {
+            var priceIndex = document.getElementById('CostEach4').getAttribute('data-value');
+            document.getElementById("cost4").value = (quan * priceIndex).toFixed(2);
+          }
+          else if (rowIndex == 5) {
+            var priceIndex = document.getElementById('CostEach5').getAttribute('data-value');
+            document.getElementById("cost5").value = (quan * priceIndex).toFixed(2);
+          }
+          updateTotal();
         })
-
-        function validphonenum() {
-            var phone = document.getElementById("phone").value;
-
-            var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-
-            if (phoneRegex.test(phone)) {
-                return true;
-            } else {
-                return false;
-            }
+        function updateTotal(){
+          cost1 = 1 * document.getElementById("cost1").value;
+          cost2 = 1 * document.getElementById("cost2").value;
+          cost3 = 1 * document.getElementById("cost3").value;
+          cost4 = 1 * document.getElementById("cost4").value;
+          cost5 = 1 * document.getElementById("cost5").value;
+          subtotal = 0;
+          subtotal = cost1 + cost2 + cost3 + cost4 + cost5;
+          document.getElementById("subtotal").value = (subtotal * 1).toFixed(2);
+          tax = calc_tax(subtotal);
+          calc_total(subtotal, tax);
         }
+      })
 
-        function addMinutes(date, minutes) {
-            return new Date(date.getTime() + minutes*60000);
+      function validphonenum() {
+        var phone = document.getElementById("phone").value;
+        var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
+        if (phoneRegex.test(phone)) {
+          return true;
         }
+        else {
+          return false;
+        }
+      }
 
-        function validateForm() {
-            var formisvalid = false;
-            let lastname = document.getElementById("lname").value;
-            let subtotal = document.getElementById("subtotal").value;
-            let street = document.getElementById("street").value;
-            let city = document.getElementById("city").value;
-            var today = new Date();
+      function addMinutes(date, minutes) {
+        return new Date(date.getTime() + minutes*60000);
+      }
 
-                if (lastname == "") {
-                    alert("Last name must be filled out");
-                    return formisvalid;
-                }
-                else if (!validphonenum()) {
-                    alert("Phone number must be valid ten-digit number");
-                    return formisvalid;
-                }
-                else if (subtotal == 0) {
-                    alert("Must order at least one item");
-                    return formisvalid;
-                }
-                else if (document.getElementById('delivery').checked) {
-                    if (street == "") {
-                        alert("Street must be filled out");
-                        return formisvalid;
-                    }
-                    else if (city == "") {
-                        alert("City must be filled out");
-                        return formisvalid;
-                    }
-                    formisvalid = true;
-                    var temp_today = addMinutes(today, 30);
-                    var temp_minutes = temp_today.getMinutes();
-                    if (temp_minutes < 10) {
-                        temp_minutes = "0" + temp_minutes;
-                    }
+      function validateForm() {
+        var formisvalid = false;
+        let lastname = document.getElementById("lname").value;
+        let subtotal = document.getElementById("subtotal").value;
+        let street = document.getElementById("street").value;
+        let city = document.getElementById("city").value;
+        var today = new Date();
+
+        if (lastname == "") {
+          alert("Last name must be filled out");
+          return formisvalid;
+        }
+        else if (!validphonenum()) {
+          alert("Phone number must be valid ten-digit number");
+          return formisvalid;
+        }
+        else if (subtotal == 0) {
+          alert("Must order at least one item");
+          return formisvalid;
+        }
+        else if (document.getElementById('delivery').checked) {
+          if (street == "") {
+            alert("Street must be filled out");
+            return formisvalid;
+          }
+          else if (city == "") {
+            alert("City must be filled out");
+            return formisvalid;
+          }
+          formisvalid = true;
+          var temp_today = addMinutes(today, 30);
+          var temp_minutes = temp_today.getMinutes();
+          if (temp_minutes < 10) {
+            temp_minutes = "0" + temp_minutes;
+          }
                     var pickup_time = temp_today.getHours() + ":" + temp_minutes;
                     document.getElementById("order_ready_time").value = pickup_time;
                     return formisvalid;
