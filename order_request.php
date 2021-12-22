@@ -204,7 +204,7 @@
     else {
         $message .= " for pickup";
     }
-    mail("asma.halwany@yahoo.com", "Your Jade Delight Order Summary", $message);
+    mail("asma.el_halwani@tufts.com", "Your Jade Delight Order Summary", $message);
 
     ?>
     </div>
