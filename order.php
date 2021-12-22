@@ -177,22 +177,22 @@
           if (temp_minutes < 10) {
             temp_minutes = "0" + temp_minutes;
           }
-                    var pickup_time = temp_today.getHours() + ":" + temp_minutes;
-                    document.getElementById("order_ready_time").value = pickup_time;
-                    return formisvalid;
-                }
-                else {
-                    formisvalid = true;
-                    var temp_today = addMinutes(today, 15);
-                    var temp_minutes = temp_today.getMinutes();
-                    if (temp_minutes < 10) {
-                        temp_minutes = "0" + temp_minutes;
-                    }
-                    var pickup_time = temp_today.getHours() + ":" + temp_minutes;
-                    document.getElementById("order_ready_time").value = pickup_time;
-                }
-                return formisvalid;
-            }
+          var pickup_time = temp_today.getHours() + ":" + temp_minutes;
+          document.getElementById("order_ready_time").value = pickup_time;
+          return formisvalid;
+        }
+        else {
+          formisvalid = true;
+          var temp_today = addMinutes(today, 15);
+          var temp_minutes = temp_today.getMinutes();
+          if (temp_minutes < 10) {
+            temp_minutes = "0" + temp_minutes;
+          }
+          var pickup_time = temp_today.getHours() + ":" + temp_minutes;
+          document.getElementById("order_ready_time").value = pickup_time;
+        }
+        return formisvalid;
+      }
 
 </script>
 
